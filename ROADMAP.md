@@ -4,8 +4,8 @@
 |---|---|---|
 | M0 Setup | preserved legacy, workflow, architecture, single executable task | DONE |
 | M1 Foundation | Russian runnable map, camera/select/build/pause, desktop/touch proof | DONE: AK-001 PASS |
-| M2 Economy | production/housing/food/population, local save/load, meaningful 5-minute loop | AK-002 external PASS; AK-003 persistence complete, external review pending |
-| M3 Defense slice | walls/gate/tower, one defender/enemy, warned siege, win/lose/restart | PLANNED |
+| M2 Economy | production/housing/food/population, local save/load, meaningful 5-minute loop | DONE: AK-002 / AK-003 external PASS |
+| M3 Defense slice | walls/gate/tower, one defender/enemy, warned siege, win/lose/restart | AK-004 complete; external review pending |
 | M4 Guided mission | one balanced 10-15 minute mission, concise tutorial/goals/feedback | PLANNED |
 | M5 Presentation/mobile | coherent art/audio/settings, compact HUD, portrait/landscape/lifecycle proof | PLANNED |
 | M6 Yandex | real SDK draft ready/gameplay/pause, cloud fallback, optional reward, package | PLANNED |

@@ -36,7 +36,7 @@ for(const [name,width,height]of [['desktop',1440,900],['mobile',390,844],['lands
    await page.locator('#pause').click();await page.waitForTimeout(1200);await page.locator('#pause').click();await page.locator('#save').click();const resumed=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)),key);expect(resumed.state.tick).toBeGreaterThan(saved.state.tick);expect(resumed.state.resources.wood).toBeGreaterThan(saved.state.resources.wood);expect(resumed.state.resources.food).toBeGreaterThan(saved.state.resources.food);
    await page.locator('#load').click();await expect(page.locator('#toast')).toHaveText('Поселение восстановлено');expect(await page.evaluate(()=>localStorage.getItem('amber-keep-save-v8'))).toBe('legacy-sentinel');
    await page.locator('#reset').click();if(name==='landscape')for(let i=0;i<5;i++)await page.locator('#zoom-out').click();
-   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:`evidence/AK-003-${name}.png`});expect(errors).toEqual([]);
+   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:`test-results/persistence-${name}.png`});expect(errors).toEqual([]);
   }finally{await context.close();}
  });
 }

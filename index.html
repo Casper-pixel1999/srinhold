@@ -24,7 +24,7 @@
     <canvas id="map" tabindex="0" aria-label="Карта поселения. Перетаскивайте для перемещения, выбирайте клетки для строительства."></canvas>
     <div class="region"><span>Долина Янтаря</span><small>Свободное строительство</small></div>
     <nav class="save-tools" aria-label="Сохранение поселения"><button id="save">Сохранить</button><button id="load">Загрузить</button></nav>
-    <div id="paused" hidden>Пауза</div>
+    <div id="battle-result" role="status" hidden></div><div id="paused" hidden>Пауза</div>
     <div id="loading" role="status">Загружаем долину…</div>
     <nav class="camera-tools" aria-label="Управление картой">
       <button id="zoom-in" aria-label="Приблизить">+</button>
@@ -33,13 +33,14 @@
     </nav>
     <div id="toast" role="status" aria-live="polite"></div>
   </main>
+  <nav class="defense-tools" aria-label="Оборона"><button id="build-wall" data-building="wall">Стена</button><button id="build-gate" data-building="gate">Ворота</button><button id="build-tower" data-building="tower">Башня</button><button id="build-guard" data-building="guard">Страж</button><button id="siege">Начать осаду</button><button id="restart" hidden>Заново</button></nav>
   <footer class="dock">
     <div class="build-options" role="group" aria-label="Постройки">
       <button id="build-house" class="build-card" data-building="house" aria-pressed="false"><img src="assets/runtime/house.webp" alt=""><span><strong>Дом</strong><small>35 дерева · 15 золота</small></span></button>
       <button id="build-farm" class="build-card" data-building="farm" aria-pressed="false"><img src="assets/runtime/farm.webp" alt=""><span><strong>Ферма</strong><small>45 дерева · 20 золота</small></span></button>
       <button id="build-lumber" class="build-card" data-building="lumber" aria-pressed="false"><img src="assets/runtime/lumber.webp" alt=""><span><strong>Лесоруб</strong><small>25 дерева · 25 золота</small></span></button>
     </div>
-    <div class="context"><strong id="settlement-status">Поселение растёт</strong><span id="selection">Ваше поселение</span><span id="hint">Выберите постройку и место</span><span id="clock">Время: 00:00</span></div>
+    <div class="context"><strong id="settlement-status">Поселение растёт</strong><span id="selection">Ваше поселение</span><span id="hint">Выберите постройку и место</span><span id="siege-status" role="status" aria-live="polite">Подготовка: укрепите восточный подход</span><button id="gate-toggle" hidden>Открыть ворота</button><span id="clock">Время: 00:00</span></div>
     <div id="confirmation" hidden><span id="placement">Выберите свободную клетку</span><div><button id="confirm" class="primary" disabled>Построить</button><button id="cancel">Отмена</button></div></div>
   </footer>
   <script type="module" src="src/main.js"></script>

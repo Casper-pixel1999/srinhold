@@ -7,14 +7,14 @@ Read AGENTS.md, PROJECT_STATE.md, TASK.md. Temporarily Sol develops the single c
 Requires Node.js 20+ and npm. No runtime dependencies.
 - `npm ci` installs the Playwright development dependency.
 - `npm run dev` -> http://127.0.0.1:3000.
-- `npm test` runs state/command/projection tests.
+- `npm test` runs state/command/projection/save/combat tests.
 - `npx playwright install chromium` installs the managed test browser when absent.
 - `npm run test:browser` verifies desktop/touch and actual native-tab visibility (Windows host; Chromium runs offscreen for that check).
 - `npm run build` creates runtime-only dist/; `npm run preview` -> http://127.0.0.1:3002.
 - Built-browser checks in PowerShell: `$env:BUILT_TEST='1'; npm run test:browser; Remove-Item Env:BUILT_TEST`.
-Choose «Дом», «Ферма» or «Лесоруб», tap a free grass tile, confirm/cancel. Lumber requires cardinal forest adjacency. Drag the map, wheel/pinch or +/- to zoom; home returns to keep. Farms feed residents; lumber produces wood. Houses add capacity. «Пауза» and hidden tabs freeze economy/time. Combat/persistence are not implemented yet.
+Choose «Дом», «Ферма» or «Лесоруб», tap a free grass tile, confirm/cancel. Lumber requires cardinal forest adjacency. Drag the map, wheel/pinch or +/- to zoom; home returns to keep. Farms feed residents; lumber produces wood. Houses add capacity. «Пауза» and hidden tabs freeze economy/time. Local save/load restores the settlement and pause; blocked storage remains playable. Place walls/closed gates to block approaches, a tower and a holding guard to defend. «Начать осаду» warns for 20 seconds before three eastern raiders. Toggle a selected gate explicitly; keep destruction loses, eliminating the wave wins; «Заново» starts and saves a fresh run.
 
-Important visual evidence: evidence/AK-001-desktop.png, evidence/AK-001-mobile.png, evidence/AK-001-landscape.png.
+Current defense evidence: evidence/AK-004-{desktop,mobile,landscape}.png and matching victory captures. Accepted AK-001/002/003 evidence is preserved.
 
 Preserved reference: legacy/README.md and legacy/standalone/amber-keep-v8-play.html. Old source on Windows: `python -m http.server 3001 --directory legacy --bind 127.0.0.1`, then http://127.0.0.1:3001. Old Linux browser config intentionally untouched.
 

@@ -33,3 +33,9 @@ Accepted entries: date / task ID / PASS or DEFER / full candidate SHA / outcome.
 ## AK-003 — local persistence (external review pending)
 - Completed schema-v1 local settlement save/load, exact deterministic continuation, safe validation/storage failure feedback and desktop/mobile evidence.
 - Candidate: HEAD at AK-003 READY_FOR_REVIEW commit; push main and stop. No self-acceptance or M3 task.
+
+## AK-003 — external PASS
+Accepted 6a9759183efa118fb9c5b832e1179fe0dc74dd75. M2 Economy complete. Owner authorized one bounded AK-004 defense slice.
+
+## AK-004 — defense slice (external review pending)
+Completed paid blocking walls/gate, tower/holding guard, deterministic finite warned siege, damage/deaths/outcomes/restart, compatible combat persistence and desktop/mobile evidence. 26 Node, 19 source (+5 final affected), 19 built browser checks passed. Candidate: HEAD at READY_FOR_REVIEW commit. Push main and STOP; no next task.

@@ -44,3 +44,8 @@ Consequences: supersedes curator-only rules temporarily; preserve working code/h
 Decision: schema-v1 envelope under amber-keep-rebuild-save-v1; persist fractional stocks, stable buildings/IDs, population/growth, tick/fixed-step remainder and user pause. Validate before applying; no transient view state, legacy migration or offline catch-up.
 Reason: deterministic resume and safe browser storage failures within AK-003.
 Consequences: corrupt/incompatible startup/manual loads preserve gameplay; automatic writes stop after invalid/unavailable storage until explicit successful save. AK-002 external PASS recorded; AK-003 requires external review after push, no M3 work.
+
+## D010 Bounded M3 defense and compatible local schema evolution
+Decision: AK-004 is a single optional-start defense encounter: 20s east warning, three identical raiders, stationary ranged guard/tower, destructible blocking wall/closed gate, victory/keep defeat/restart. Cardinal BFS first finds gaps/open gates, otherwise breaches a blocking route. Fixed step and deterministic tie order; no advanced AI or campaign.
+Reason: owner accepted AK-003 and requested the smallest real playable tactical defense loop.
+Consequences: M2 DONE. Save envelope/state advances to schema 2 at the existing key; exact AK-003 saves remain readable after validation, no V8 migration. Gate toggles and paid defender placement are explicit player actions; end-state restart overwrites only the rebuild save. One commit/push then external review, no next task.
