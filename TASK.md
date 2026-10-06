@@ -1,47 +1,45 @@
 # Task
-ID: AK-001
-Status: READY_FOR_REVIEW
+ID: AK-002
+Status: READY
 Attempt: 1
-Base commit: 12c21d44a3d06eef9f9c7f4074ba951ec654e357
-Report commit: HEAD at READY_FOR_REVIEW commit
-Existing implementation: 1d835b7 (preserve; do not rebuild)
+Base commit: set by Luna when claiming
+Report commit: pending
 Last reviewed commit: none
 Review decision: pending
 
 ## Goal
-Validate and take ownership of the existing AK-001 foundation against the original criteria; preserve working implementation.
+Turn the accepted construction foundation into a small settlement economy: produce wood/food, feed residents and expand housing.
 
 ## Context
-M1. Sol already implemented the foundation in 1d835b7 before the owner restored strict role boundaries. This is an inherited-work validation handoff, not a new implementation or correction cycle. Original acceptance criteria below remain frozen. Read the existing source/report first; do not rebuild working features. legacy/ is reference only. No heartbeat or automatic monitoring. No PASS has been issued.
+M2, first economy task. AK-001 accepted at candidate 5a61604ac40279381712b12817df540a554024c3. Preserve its map/camera/input/atomic commands and fixed-step lifecycle. Work within existing JS/Canvas/DOM architecture; no framework or broad refactor. This task does not complete M2: save/load is a later task.
 
 ## Scope
-Luna's current operation is verification/reporting only: inspect existing code, run the required checks and live desktop/mobile verification below. The following describes the inherited implementation to validate, not permission to recreate it or add features. If a criterion fails, record the concrete blocker and stop with BLOCKED; do not fix production or add/modify tests until Sol issues an owner-requested FIX.
-
-- New root HTML/CSS/modules, Windows-compatible Node dev command localhost:3000, unit command and minimal static release build.
-- Deterministic 24x24 grass/forest/rock/water map, central keep and two houses. Readable isometric rendering with selected legacy sprites and explicit rectangles/anchors; no wholesale old renderer copy.
-- Russian title/HUD: Дерево, Камень, Еда, Золото; stocks 150/100/100/100. Build one house type, cost 35 wood/15 gold, free grass only. No spacing rule this task.
-- Select house -> Russian name. Preview/confirm/cancel on desktop/touch; invalid terrain/occupied/insufficient resources never charge/create. Escape cancels on desktop.
-- Drag camera, wheel/pinch zoom with +/- fallback, reset view. Drag/pinch never builds/selects accidentally. Pause/resume stops clock; hidden tab freezes, resumes without catch-up.
-- Small serializable state/command/simulation boundary and local platform stub. Persistence in M2; create only modules needed now.
+- Three build choices: existing Дом (35 wood/15 gold), Ферма (45 wood/20 gold), Лесоруб (25 wood/25 gold). Keep initial resources 150 wood/100 stone/100 food/100 gold. All build on free grass; lumber additionally requires at least one cardinally adjacent forest tile. Reject atomically with Russian feedback.
+- Farms produce 2 food/s; lumber buildings produce 1.5 wood/s, in simulation time. Forest does not deplete. Stone/gold stay construction reserves; no extraction/taxes yet. Resources retain fractional precision in state and display whole units without long decimals.
+- Initial population 12. Capacity: keep 8, each house 6 (initial capacity 20). Residents consume 0.04 food/person/s; resource amounts clamp at zero and remain finite. No worker assignment, transport, happiness or deaths in this task.
+- Add one resident after 30 continuous simulation seconds with food >=10 and population below capacity. Reset the growth timer when either condition fails; never grant catch-up growth. Population stays within housing capacity. Food shortage stops growth; farms restore supply without an unrecoverable defeat.
+- Russian population/capacity HUD and concise status: housing full, food shortage or settlement growing. Selected farm/lumber identifies its resource/rate. Build cards show real costs; preview uses selected sprite/type and real validity. Reuse only farm/lumber art from the existing painted atlas, with explicit cropped bounds/anchors, optimized runtime WebP.
+- Compact three-card layout on desktop and both mobile orientations; within-panel scrolling allowed, no page overflow or controls covering the only usable placement area. Preserve touch confirm/cancel, pan/pinch arbitration, pause/hidden-tab behavior.
 
 ## Acceptance Criteria
-1. npm run dev works on this Windows host. Required assets load without uncaught errors. No runtime request/import from legacy/.
-2. Distinct terrain, keep/two houses, correct sprite anchors/depth. Picking matches visible tiles before/after pan/zoom.
-3. Confirm valid house -> exactly one house, wood 115/gold 85. Cancel/invalid requests -> unchanged resources/count. Exhaustion rejected in Russian.
-4. Russian UI only; usable at 1440x900, 390x844 and 844x390 without horizontal page scroll or controls blocking construction. Touch targets >=44px; useful map area.
-5. Mouse/touch drag/pinch never builds; zoom/reset work. Pause/hidden time stays fixed; resume has no large jump.
-6. npm test passes focused tests; npm run build produces runnable dist with root index.html, excluding legacy/evidence/tests/debug. Document exact commands.
+1. All three types can be built/selected with correct Russian names, costs and previews. Wrong terrain/occupied/insufficient resources/forest adjacency and cancel leave state unchanged.
+2. Build one farm and lumber from initial stock: wood 80, gold 55 before stepping. With population 12, after 10 active seconds wood is 95 and food 115.2 (floating tolerance); stone/gold unchanged. No production during pause/hidden time.
+3. Initial population/capacity is 12/20. Eligible 30s produces exactly one newcomer; full housing/food <10 stops and resets growth. A house raises capacity by six and permits growth. Empty food cannot go negative, corrupt state or prevent later farm recovery.
+4. A deterministic 300s scenario demonstrates farm/lumber production, food consumption, housing expansion and growth without negative/nonfinite stocks, capacity overflow or duplicated payments.
+5. Actual running source and built app support the loop at 1440x900, 390x844, 844x390: readable resources/population, all three cards reachable, >=44px touch targets, correct pan/zoom picking and usable map. No English player text, failed runtime assets or uncaught errors.
+6. Existing foundation behavior remains intact; required tests/build pass. Build includes only necessary runtime assets and updated asset allowlist; no legacy/evidence/tests/debug imports or new runtime dependencies.
 
 ## Non-goals
-Production/population/workers, combat/pathfinding, campaign, persistence/migration UI, SDK/ads/cloud/audio, full polish or v8 parity. No framework/TypeScript migration.
+Save/cloud/migration, SDK/ads, quarry/taxes/trading, combat/campaign/tutorial systems, worker agents/pathfinding, flour/bread chains, storage caps, demolition/upgrades, art redesign and unrelated optimization. Do not modify curator documents or issue another task.
 
 ## Required Tests
-- Node: valid house/cost/atomicity, invalid terrain/occupied/insufficient resources/cancel, deterministic initial state and stepping/pause as applicable.
-- Browser: start/select/confirm/cancel, pan+zoom picking, real touch drag/pinch, pause/visibility resume, console/network failures. Playwright dev dependency allowed; managed Chromium, no Linux path.
-- Smoke built dist separately; verify no legacy requests/imports. Record executed commands/results.
+- Focused Node tests: costs/atomic rejections for each type, lumber adjacency, exact production/consumption, fractional precision/nonnegative food, growth timing/reset/capacity/recovery, pause and deterministic 300s scenario.
+- Retain existing projection/gesture/lifecycle regressions. When resources become time-dependent, assert cost deltas at a controlled paused moment; do not remove atomicity checks or weaken expected outcomes.
+- npm test, npm run build, npm run test:browser; repeat browser smoke against built dist with BUILT_TEST=1. Ensure new meaningful Node tests are included by the npm test command.
+- Browser: all three build/select/cancel paths, forest rejection, real touch gestures/placement and changing economy. Observe at least 30 active seconds of the real loop; use deterministic stepping for the longer balance scenario, not a substitute for live behavior. No production-only debug API in dist.
 
 ## Visual Verification
-Inspect actual running source and built app. Commit evidence/AK-001-desktop.png (1440x900), evidence/AK-001-mobile.png (390x844), evidence/AK-001-landscape.png (844x390). At least one shows selected/built house. Inspect clipping/sprite artifacts and touch placement usability. Report interaction checks. Missing browser evidence is a blocker.
+Inspect live source and built app. Commit evidence/AK-002-desktop.png, AK-002-mobile.png and AK-002-landscape.png at the three specified dimensions. Show farm/lumber, changed stocks and population HUD; inspect atlas edges, preview/depth and all cards. Report source vs built interaction checks briefly.
 
 ## Completion Requirements
-Claim/record base per AGENTS; validate inherited work only. WORK_REPORT: ID/attempt/base, executed checks, inspected screenshots and concrete problems; distinguish inherited Sol evidence from Luna's checks. Reuse correct existing screenshots unless new evidence is needed. If checks pass, set READY_FOR_REVIEW; otherwise BLOCKED with failures. Commit report/status and necessary evidence only in English; leave clean tree; STOP. No production/test fixes, next task, heartbeat or curator/legacy edits. Owner requests Sol review separately.
+Claim/record base per AGENTS.md; implement only this task. WORK_REPORT uses Completed/Changed/Tests/Visual Verification/Problems/Deferred Findings/Commit and matching ID/attempt/base; concise actual results. Set READY_FOR_REVIEW, commit relevant implementation/tests/assets/evidence/report/status, leave clean tree and STOP. Owner requests Sol review; no heartbeat, monitoring, self-review or next task.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-06 — AK-001 — PASS
+- Candidate: 5a61604ac40279381712b12817df540a554024c3; inherited production 1d835b7 unchanged by Luna.
+- Reviewed committed validation/report and implementation boundaries, inspected desktop/portrait/landscape evidence. Original acceptance criteria satisfied; no blockers.
+- Used Luna's executed 6 unit/5 source/5 built checks and previously verified unchanged implementation; did not rerun identical suites during curator review.
+- Prepared one AK-002 economy task; no production/test changes by Sol. Physical-device variation deferred to release QA.
+
 ## 2026-10-06 — Owner role/workflow correction
 - Curator automation amber-keep-curator-review disabled (PAUSED); removed worker-heartbeat instructions.
 - Sol limited to coordination and explicitly requested reviews; no production changes during this correction.

@@ -3,8 +3,8 @@
 | Milestone | Deliverable / exit gate | Status |
 |---|---|---|
 | M0 Setup | preserved legacy, workflow, architecture, single executable task | DONE |
-| M1 Foundation | Russian runnable map, camera/select/build/pause, desktop/touch proof | READY: AK-001 |
-| M2 Economy | production/housing/food/population, local save/load, meaningful 5-minute loop | PLANNED |
+| M1 Foundation | Russian runnable map, camera/select/build/pause, desktop/touch proof | DONE: AK-001 PASS |
+| M2 Economy | production/housing/food/population, local save/load, meaningful 5-minute loop | READY: AK-002 economy; save/load later |
 | M3 Defense slice | walls/gate/tower, one defender/enemy, warned siege, win/lose/restart | PLANNED |
 | M4 Guided mission | one balanced 10-15 minute mission, concise tutorial/goals/feedback | PLANNED |
 | M5 Presentation/mobile | coherent art/audio/settings, compact HUD, portrait/landscape/lifecycle proof | PLANNED |
