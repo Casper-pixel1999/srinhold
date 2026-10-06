@@ -1,8 +1,8 @@
 # Task
 ID: AK-001
-Status: READY
+Status: IMPLEMENTING
 Attempt: 1
-Base commit: set by Luna when claiming this handoff
+Base commit: 12c21d44a3d06eef9f9c7f4074ba951ec654e357
 Report commit: pending Luna validation report
 Existing implementation: 1d835b7 (preserve; do not rebuild)
 Last reviewed commit: none
