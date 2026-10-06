@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {Game} from '../src/engine.js';
+test('wall line is atomic and its total cost cannot exceed supplies',()=>{const g=new Game();g.resources.stone=40;const points=g.wallLine({x:10,y:17},{x:12,y:17}),before=g.snapshot();assert.equal(g.buildBatch('wall',points),'resources');assert.deepEqual(g.snapshot(),before);g.resources.stone=45;assert.equal(g.buildBatch('wall',points),null);assert.equal(g.resources.stone,0);assert.ok(points.every(p=>g.at(p.x,p.y)?.type==='wall'));});
+test('one occupied tile cancels an entire wall line',()=>{const g=new Game(),before=g.snapshot();assert.equal(g.buildBatch('wall',g.wallLine({x:9,y:10},{x:12,y:10})),'occupied');assert.deepEqual(g.snapshot(),before);});
