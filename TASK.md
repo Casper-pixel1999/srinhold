@@ -1,9 +1,9 @@
 # Task
 ID: AK-001
-Status: IMPLEMENTING
+Status: READY_FOR_REVIEW
 Attempt: 1
 Base commit: 12c21d44a3d06eef9f9c7f4074ba951ec654e357
-Report commit: pending Luna validation report
+Report commit: HEAD at READY_FOR_REVIEW commit
 Existing implementation: 1d835b7 (preserve; do not rebuild)
 Last reviewed commit: none
 Review decision: pending

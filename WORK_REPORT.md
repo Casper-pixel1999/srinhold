@@ -1,37 +1,26 @@
 # Work Report
 Task: AK-001
 Attempt: 1
-Base commit: d53a3f1 (full SHA in TASK.md)
-Author: Sol (inherited implementation report, not Luna validation or formal review).
-Handoff: implementation 1d835b7 preserved; AK-001 awaits Luna validation. Recurring curator review disabled; no worker heartbeat.
+Base commit: 12c21d44a3d06eef9f9c7f4074ba951ec654e357
+Author: Luna (validation handoff; no implementation changes).
 
-## Completed
-- Russian 24x24 isometric foundation, keep/two houses, four terrains, atomic house construction.
-- Selection, preview/confirm/cancel/Escape; mouse/touch drag, anchored wheel/pinch/+/- zoom, reset; pause/hidden-tab freeze.
-- Serializable state/fixed-step simulation/local platform stub, selected WebP art ~327KB. No legacy runtime imports, SDK, economy or persistence.
-
-## Changed
-- index.html, style.css, src/{main,state,render,input,assets,platform}.js, assets/runtime/.
-- package.json/lock, playwright.config.js, tools/{serve,build}.mjs, tests/, README.md and three evidence screenshots.
-- TASK status/metadata only; legacy and curator requirements unchanged.
-
-## Tests
-- npm test: 6/6 passed (atomic costs/validation/cancel, determinism/pause, inverse picking/zoom).
-- npm run build: passed; dist has 14 runtime files, no legacy/evidence/tests/debug/art documentation.
-- npm run test:browser: 5/5 source; BUILT_TEST=1 npm run test:browser: 5/5 built dist.
-- Native Chromium tab switch verified actual hidden/visible, frozen clock and no catch-up. Playwright focus emulation bypassed only for this check.
-- Native CDP touch: drag/pinch never builds; picking after pinch, confirm/cancel, desktop wheel/pan/reset/exhaustion, >=44px controls. No uncaught/console errors or asset HTTP failures. git diff --check passed.
+## Checks
+- `npm test`: 6/6 passed (state atomicity, deterministic state/time, render picking).
+- `npm run build`: passed; runtime-only `dist/` contains 14 files and excludes legacy, evidence, tests, and debug sources.
+- `npm run test:browser`: 5/5 passed against the source dev server (`npm run dev`, localhost:3000).
+- `$env:BUILT_TEST='1'; npm run test:browser`: 5/5 passed against built `dist/` preview (localhost:3002).
+- Browser checks covered house selection/build/cancel/invalid terrain/occupied/exhaustion, exact costs and stock, desktop pan/wheel/buttons/reset/picking, touch drag/pinch/build/cancel, pause and native tab visibility freeze/resume, Russian UI, >=44px controls, viewport overflow, console errors, failed requests, and legacy requests.
+- `git diff --check`: passed. No source or test files changed.
 
 ## Visual Verification
-- Live source inspected via agent-browser; final built screenshots inspected at 1440x900, 390x844, 844x390.
-- evidence/AK-001-desktop.png, AK-001-mobile.png, AK-001-landscape.png: built/selected house, Russian HUD, no clipped controls/horizontal overflow, usable map.
+- Inspected the running source and built app in Chromium through the browser suite; inspected the final built-app screenshots below.
+- `evidence/AK-001-desktop.png` (1440x900), `evidence/AK-001-mobile.png` (390x844), `evidence/AK-001-landscape.png` (844x390).
+- All show the Russian interface and a successfully built/selected house; controls and map remain visible without horizontal page overflow.
 
-## Problems
-- No implementation blockers. Dev server remains http://127.0.0.1:3000.
-
-## Deferred Findings
-- Physical-phone/browser variation remains release QA; touch verification uses Chromium emulation.
-- Existing asset provenance publication gate unchanged.
+## Findings
+- No AK-001 acceptance blockers found. Physical-device browser variation remains release QA; touch checks used Chromium emulation.
+- Asset provenance publication gate remains as previously recorded; not part of this task.
 
 ## Commit
-- 1d835b7 — inherited implementation; no Luna validation or curator PASS yet. Results above are historical checks, not rerun during role correction.
+- Inherited implementation: 1d835b7. Validation claim: 08d662adf77b09b7cb78d584c5dd1a1da409f443.
+- Validation/report commit: HEAD at READY_FOR_REVIEW commit.
