@@ -1,0 +1,14 @@
+{
+  "name": "amber-keep-rebuild",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "test": "node --test tests/state.test.js tests/render.test.js",
+    "test:browser": "playwright test",
+    "build": "node tools/build.mjs",
+    "preview": "node tools/serve.mjs dist 3002"
+  },
+  "devDependencies": { "@playwright/test": "1.63.0" }
+}

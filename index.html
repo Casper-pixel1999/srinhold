@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#203d32">
+  <title>Янтарная крепость</title>
+  <link rel="icon" href="assets/runtime/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="crest" aria-hidden="true">Я</span><div><h1>Янтарная крепость</h1><small>Начало поселения</small></div></div>
+    <dl class="resources" aria-label="Запасы поселения">
+      <div><dt>Дерево</dt><dd id="wood">150</dd></div>
+      <div><dt>Камень</dt><dd id="stone">100</dd></div>
+      <div><dt>Еда</dt><dd id="food">100</dd></div>
+      <div><dt>Золото</dt><dd id="gold">100</dd></div>
+    </dl>
+    <button id="pause" aria-pressed="false">Пауза</button>
+  </header>
+  <main id="world">
+    <canvas id="map" tabindex="0" aria-label="Карта поселения. Перетаскивайте для перемещения, выбирайте клетки для строительства."></canvas>
+    <div class="region"><span>Долина Янтаря</span><small>Свободное строительство</small></div>
+    <div id="paused" hidden>Пауза</div>
+    <div id="loading" role="status">Загружаем долину…</div>
+    <nav class="camera-tools" aria-label="Управление картой">
+      <button id="zoom-in" aria-label="Приблизить">+</button>
+      <button id="zoom-out" aria-label="Отдалить">−</button>
+      <button id="reset" aria-label="Вернуться к крепости">⌂</button>
+    </nav>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </main>
+  <footer class="dock">
+    <button id="build" class="build-card" aria-pressed="false"><img src="assets/runtime/house.webp" alt=""><span><strong>Построить дом</strong><small>35 дерева · 15 золота</small></span></button>
+    <div class="context"><strong id="selection">Ваше поселение</strong><span id="hint">Выберите дом или место для постройки</span><span id="clock">Время: 00:00</span></div>
+    <div id="confirmation" hidden><span id="placement">Выберите свободную клетку</span><div><button id="confirm" class="primary" disabled>Построить</button><button id="cancel">Отмена</button></div></div>
+  </footer>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

@@ -1,9 +1,9 @@
 # Task
 ID: AK-001
-Status: IMPLEMENTING
+Status: READY_FOR_REVIEW
 Attempt: 1
 Base commit: d53a3f1c04070e40f95f33c85f35f4c735529e27
-Report commit: pending (resolve committed READY_FOR_REVIEW HEAD)
+Report commit: HEAD at READY_FOR_REVIEW commit (resolve actual SHA from Git)
 Last reviewed commit: none
 Review decision: pending
 
