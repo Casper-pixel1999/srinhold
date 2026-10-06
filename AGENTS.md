@@ -1,5 +1,10 @@
 # Amber Keep agent contract
 
+## Temporary owner-authorized mode (2026-10-06)
+Sol is PRIMARY AUTONOMOUS DEVELOPER and CURATOR; Luna is paused. This section overrides the role split and handoff rules below until the owner changes it. Preserve current work; complete only the current task/milestone, implement and fix blockers, run required tests and live visual QA, update TASK/STATE/WORK_REPORT, commit and STOP for external owner review. Do not prepare/start a next task, issue self-PASS or schedule monitoring. Nonblockers go to DEFERRED. No additional dependencies/refactors outside task needs. The former two-agent contract below remains historical/default guidance, not a reason to wait for Luna.
+
+GitHub https://github.com/Casper-pixel1999/srinhold is the source of truth. Before work check branch, HEAD, status, recent log and remote state. Preserve branches/history; no force push or branch replacement. Each completed milestone ends with tests/visual QA, updated coordination, commit, ordinary push and STOP for external review of that GitHub commit. Do not start a new task after pushing. A push failure is a reported delivery blocker, not completion.
+
 ## Roles and source of truth
 - Sol (GPT-6.1 Sol): CURATOR; product, architecture, tasks and PASS/FIX/DEFER reviews; coordination files only. Do not implement gameplay, UI, rendering, tests or fixes assigned to Luna. Any exception requires a new explicit owner instruction; discovering a bug is not permission to fix it.
 - Luna (GPT-6 Luna): implementation, tests, browser verification, packaging; no invented features or tasks.

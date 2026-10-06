@@ -34,3 +34,8 @@ Consequences: candidate SHA recorded; deferred issues require explicit future ta
 Decision: keep production commit 1d835b7; AK-001 remains the single task as a Luna validation handoff before formal review.
 Reason: owner restored curator boundaries and explicitly requested preservation of valid existing work.
 Consequences: no rollback, self-acceptance, new gameplay scope or Sol fixes; Luna reports evidence/blockers, owner asks Sol to review.
+
+## D008 Temporary autonomous developer, external GitHub review
+Decision: Sol finishes the current incomplete AK-002 with production/test/QA authority; Luna paused. GitHub Casper-pixel1999/srinhold is source of truth; commit/push each completed milestone and stop.
+Reason: owner explicitly changed workflow and requested completion of current work only.
+Consequences: supersedes curator-only rules temporarily; preserve working code/history, no force push, automation or next task before external review/owner approval.

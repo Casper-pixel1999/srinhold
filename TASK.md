@@ -1,9 +1,10 @@
 # Task
 ID: AK-002
-Status: IMPLEMENTING
+Status: READY_FOR_REVIEW
+Owner: Sol (temporary autonomous developer); Luna paused
 Attempt: 1
 Base commit: 513c9450d7adfcbe61ee8e8cc89e690fad009b06
-Report commit: pending
+Report commit: HEAD at completed milestone commit; external reviewer resolves GitHub SHA
 Last reviewed commit: none
 Review decision: pending
 
@@ -12,6 +13,8 @@ Turn the accepted construction foundation into a small settlement economy: produ
 
 ## Context
 M2, first economy task. AK-001 accepted at candidate 5a61604ac40279381712b12817df540a554024c3. Preserve its map/camera/input/atomic commands and fixed-step lifecycle. Work within existing JS/Canvas/DOM architecture; no framework or broad refactor. This task does not complete M2: save/load is a later task.
+Owner authorized Sol to finish the already-started AK-002 working changes, verify and commit, then stop for external review. Scope/criteria unchanged; no next milestone.
+Delivery: commit and push to origin/main (GitHub Casper-pixel1999/srinhold), then STOP for external review. Owner permits coordination updates; previous Luna-only ownership wording below is superseded by this temporary mode.
 
 ## Scope
 - Three build choices: existing Дом (35 wood/15 gold), Ферма (45 wood/20 gold), Лесоруб (25 wood/25 gold). Keep initial resources 150 wood/100 stone/100 food/100 gold. All build on free grass; lumber additionally requires at least one cardinally adjacent forest tile. Reject atomically with Russian feedback.

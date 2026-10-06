@@ -3,6 +3,7 @@ Derived from the supplied legacy assets; no runtime access to legacy/.
 Explicit source rectangles (x,y,width,height), baked as separate WebP files:
 - keep: buildings.png (10,4,407,431), resized to 397x420.
 - house: buildings.png (477,67,385,335), 385x335.
+- farm/lumber: supplied crops of buildings.png first-row frames 2/3; farm runtime 455x384 after removing a neighbouring-frame fragment, lumber 449x415. No atlas scanning at runtime.
 - tree: details.png (898,24,425,419), resized to 420x414.
 - rock: details.png (1352,142,401,286), 401x286.
 - terrain: terrain.webp resized to 384x384.

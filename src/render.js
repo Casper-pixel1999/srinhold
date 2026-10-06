@@ -1,4 +1,4 @@
-import {SIZE,terrainAt,buildReason} from './state.js';
+import {SIZE,terrainAt,buildReason,BUILDINGS} from './state.js';
 export const TILE_WIDTH = 80, TILE_HEIGHT = 40;
 export function project(x,y) { return {x:(x-y)*40,y:(x+y)*20}; }
 export function unproject(x,y) { return {x:x/80+y/40,y:y/40-x/80}; }
@@ -39,7 +39,7 @@ export class Renderer {
     for(const [i,[x,y]] of [[10,12],[12,12],[12,15]].entries()){const p=project(x,y);if(i===0)ctx.moveTo(p.x,p.y);else ctx.lineTo(p.x,p.y);}ctx.stroke();
   }
   sprite(ctx,type,x,y,alpha=1) {
-    const img=this.art[type],p=project(x,y),width=type==='keep'?106:type==='house'?88:type==='tree'?78:73;
+    const img=this.art[type],p=project(x,y),width=type==='keep'?106:BUILDINGS[type]?.width||(type==='tree'?78:73);
     const height=width*img.height/img.width;ctx.globalAlpha=alpha;
     ctx.drawImage(img,p.x-width/2,p.y+width*.16-height,width,height);ctx.globalAlpha=1;
   }
@@ -49,16 +49,16 @@ export class Renderer {
     ctx.fillStyle='#526d46';ctx.fillRect(0,0,this.width,this.height);ctx.translate(c.x,c.y);ctx.scale(c.zoom,c.zoom);
     ctx.drawImage(this.ground,-SIZE*40,-20);
     if(this.selected){const b=this.state.buildings.find(b=>b.id===this.selected);if(b)this.mark(ctx,b.x,b.y,'#f6d785');}
-    if(this.preview)this.mark(ctx,this.preview.x,this.preview.y,buildReason(this.state,this.preview.x,this.preview.y)?'#e39475':'#ffdf84');
+    if(this.preview)this.mark(ctx,this.preview.x,this.preview.y,buildReason(this.state,this.preview.x,this.preview.y,this.preview.type)?'#e39475':'#ffdf84');
     const objects=[...this.state.buildings];
     for(let y=0;y<SIZE;y++)for(let x=0;x<SIZE;x++){const t=terrainAt(x,y);if(t==='forest'&&(x+y)%2===0)objects.push({x,y,type:'tree'});if(t==='rock')objects.push({x,y,type:'rock'});}
-    if(this.preview && !buildReason(this.state,this.preview.x,this.preview.y))objects.push({...this.preview,type:'house',preview:true});
+    if(this.preview && !buildReason(this.state,this.preview.x,this.preview.y,this.preview.type))objects.push({...this.preview,preview:true});
     objects.sort((a,b)=>(a.x+a.y)-(b.x+b.y)||a.x-b.x);
     for(const obj of objects){const p=toScreen(obj.x,obj.y,c);if(p.x < -160 || p.x > this.width+160 || p.y < -30 || p.y > this.height+180)continue;this.sprite(ctx,obj.type,obj.x,obj.y,obj.preview?.55:1);}
   }
   pick(x,y){return pickTile(x,y,this.camera);}
   pickBuilding(x,y){
     const ordered=[...this.state.buildings].sort((a,b)=>(b.x+b.y)-(a.x+a.y)||b.x-a.x);
-    return ordered.find(b=>{const p=toScreen(b.x,b.y,this.camera),image=this.art[b.type],w=(b.type==='keep'?106:88)*this.camera.zoom,h=w*image.height/image.width;return x>=p.x-w/2&&x<=p.x+w/2&&y>=p.y+w*.16-h&&y<=p.y+w*.16;})||null;
+    return ordered.find(b=>{const p=toScreen(b.x,b.y,this.camera),image=this.art[b.type],w=(b.type==='keep'?106:BUILDINGS[b.type]?.width||88)*this.camera.zoom,h=w*image.height/image.width;return x>=p.x-w/2&&x<=p.x+w/2&&y>=p.y+w*.16-h&&y<=p.y+w*.16;})||null;
   }
 }

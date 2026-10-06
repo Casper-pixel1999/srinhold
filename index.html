@@ -16,6 +16,7 @@
       <div><dt>Камень</dt><dd id="stone">100</dd></div>
       <div><dt>Еда</dt><dd id="food">100</dd></div>
       <div><dt>Золото</dt><dd id="gold">100</dd></div>
+      <div class="population"><dt>Жители</dt><dd><span id="residents">12</span>/<span id="capacity">20</span></dd></div>
     </dl>
     <button id="pause" aria-pressed="false">Пауза</button>
   </header>
@@ -32,8 +33,12 @@
     <div id="toast" role="status" aria-live="polite"></div>
   </main>
   <footer class="dock">
-    <button id="build" class="build-card" aria-pressed="false"><img src="assets/runtime/house.webp" alt=""><span><strong>Построить дом</strong><small>35 дерева · 15 золота</small></span></button>
-    <div class="context"><strong id="selection">Ваше поселение</strong><span id="hint">Выберите дом или место для постройки</span><span id="clock">Время: 00:00</span></div>
+    <div class="build-options" role="group" aria-label="Постройки">
+      <button id="build-house" class="build-card" data-building="house" aria-pressed="false"><img src="assets/runtime/house.webp" alt=""><span><strong>Дом</strong><small>35 дерева · 15 золота</small></span></button>
+      <button id="build-farm" class="build-card" data-building="farm" aria-pressed="false"><img src="assets/runtime/farm.webp" alt=""><span><strong>Ферма</strong><small>45 дерева · 20 золота</small></span></button>
+      <button id="build-lumber" class="build-card" data-building="lumber" aria-pressed="false"><img src="assets/runtime/lumber.webp" alt=""><span><strong>Лесоруб</strong><small>25 дерева · 25 золота</small></span></button>
+    </div>
+    <div class="context"><strong id="settlement-status">Поселение растёт</strong><span id="selection">Ваше поселение</span><span id="hint">Выберите постройку и место</span><span id="clock">Время: 00:00</span></div>
     <div id="confirmation" hidden><span id="placement">Выберите свободную клетку</span><div><button id="confirm" class="primary" disabled>Построить</button><button id="cancel">Отмена</button></div></div>
   </footer>
   <script type="module" src="src/main.js"></script>

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-06 — AK-002 — completed, external review pending
+- Continued existing economy work; farm/lumber, atomic type-specific construction, resource production/food consumption, housing/population HUD and optimized sprites.
+- Fixed preview overwriting command type; removed farm atlas fragment; retained desktop/touch/lifecycle regressions.
+- Verified 12 unit tests and 8 browser scenarios each on source/built dist; inspected three milestone captures. No self-PASS or next task.
+- Owner switched to temporary Sol implementation and GitHub source of truth; delivery origin/main, normal commit/push only.
+
 ## 2026-10-06 — AK-001 — PASS
 - Candidate: 5a61604ac40279381712b12817df540a554024c3; inherited production 1d835b7 unchanged by Luna.
 - Reviewed committed validation/report and implementation boundaries, inspected desktop/portrait/landscape evidence. Original acceptance criteria satisfied; no blockers.
