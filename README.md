@@ -18,9 +18,9 @@ Important visual evidence: evidence/AK-001-desktop.png, evidence/AK-001-mobile.p
 
 Preserved reference: legacy/README.md and legacy/standalone/amber-keep-v8-play.html. Old source on Windows: `python -m http.server 3001 --directory legacy --bind 127.0.0.1`, then http://127.0.0.1:3001. Old Linux browser config intentionally untouched.
 
-Automatic handoff: curator heartbeat checks committed TASK/WORK_REPORT every 10 minutes; Luna creates worker heartbeat at first start. Requires available app/host; file changes alone do not wake agents. No manual report copying between chats.
+Owner-triggered handoff: Sol prepares TASK and stops; owner starts Luna; Luna reports/commits and stops; owner asks Sol to review. Repository files carry the context. Curator automation disabled; no worker heartbeat or continuous monitoring.
 
 Owner startup message for GPT-6 Luna (same folder/local checkout):
-> You are the GPT-6 Luna DEVELOPER for Amber Keep in C:/Users/Ярослав/Desktop/Game. Read AGENTS.md, PROJECT_STATE.md, TASK.md, ARCHITECTURE.md and WORK_REPORT.md. Follow the repository handshake, create the single Luna worker thread heartbeat described in AGENTS.md, and execute AK-001. Inspect the running desktop/mobile game, run required checks, commit code/evidence/report with READY_FOR_REVIEW, then stop. Future work comes only from a new READY or FIX_REQUIRED TASK.md. Do not message the curator chat or create your own tasks.
+> You are the GPT-6 Luna DEVELOPER for Amber Keep in C:/Users/Ярослав/Desktop/Game. Read AGENTS.md, PROJECT_STATE.md, TASK.md, DECISIONS.md and WORK_REPORT.md. Execute only the current AK-001 validation handoff: preserve implementation 1d835b7, inspect existing code, run required checks and live desktop/mobile verification. Update WORK_REPORT and TASK, commit the result, then stop. If a criterion fails, report BLOCKED without fixing code/tests until a FIX task is issued. Do not create automation, message another chat or start another task. The owner will request Sol review separately.
 
 References checked during setup: https://yandex.com/dev/games/doc/en/sdk/sdk-about and https://learn.chatgpt.com/docs/automations?surface=app.

@@ -21,11 +21,16 @@ Reason: early playable loop and achievable publication.
 Consequences: foundation -> economy -> siege; v8 parity not acceptance gate.
 
 ## D005 Serialized local handoff
-Decision: shared main checkout, status claim/report commits, one writer, thread heartbeats every 10 minutes.
-Reason: no manual report forwarding/shared-chat assumptions or branch bureaucracy.
-Consequences: Sol coordinates; Luna commits and stops. App/host required. Curator monitor created; Luna creates worker monitor at startup.
+Decision: shared main checkout, status claim/report commits, one writer; owner-triggered handoffs only. Supersedes the initial heartbeat plan.
+Reason: owner prohibits recurring reviews, continuous monitoring and autonomous loops.
+Consequences: Sol coordinates only; Luna implements and stops; owner explicitly requests each review. Curator automation PAUSED; no worker heartbeat.
 
 ## D006 Bounded review
 Decision: PASS accepts; DEFER accepts nonblockers; FIX only blockers, one normal correction.
 Reason: avoid infinite perfection loops.
 Consequences: candidate SHA recorded; deferred issues require explicit future task.
+
+## D007 Preserve inherited foundation
+Decision: keep production commit 1d835b7; AK-001 remains the single task as a Luna validation handoff before formal review.
+Reason: owner restored curator boundaries and explicitly requested preservation of valid existing work.
+Consequences: no rollback, self-acceptance, new gameplay scope or Sol fixes; Luna reports evidence/blockers, owner asks Sol to review.

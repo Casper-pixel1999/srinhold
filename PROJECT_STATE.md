@@ -1,8 +1,9 @@
 # Project State
-- Milestone: M0 setup complete; M1 foundation pending.
-- Works: Git/file handoff; legacy v8 preserved, 39/39 Node tests.
-- Development: AK-001 READY; no rebuilt production code yet.
-- Blockers: none for local work; Luna creates worker heartbeat on first start.
+- Milestone: M0 setup complete; M1 foundation implemented, not formally accepted.
+- Works: inherited foundation in 1d835b7; Sol reported 6 unit/5 source/5 built checks passing. Legacy preserved.
+- Development: AK-001 READY for Luna validation/ownership handoff; preserve existing code.
+- Blockers: none established; no new review/tests performed during role correction.
 - Last accepted task: SETUP (2026-10-06).
-- Curator monitor: amber-keep-curator-review, every 10 minutes.
+- Workflow: owner-triggered task -> Luna report -> owner-requested Sol review -> STOP.
+- Automation: amber-keep-curator-review PAUSED; no worker heartbeat.
 - Checkout: C:/Users/Ярослав/Desktop/Game; shared main, no remote.

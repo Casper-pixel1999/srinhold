@@ -2,7 +2,8 @@
 Task: AK-001
 Attempt: 1
 Base commit: d53a3f1 (full SHA in TASK.md)
-Worker heartbeat: not registered; owner ran this task in curator chat. Separate Luna startup pending; curator monitor exists.
+Author: Sol (inherited implementation report, not Luna validation or formal review).
+Handoff: implementation 1d835b7 preserved; AK-001 awaits Luna validation. Recurring curator review disabled; no worker heartbeat.
 
 ## Completed
 - Russian 24x24 isometric foundation, keep/two houses, four terrains, atomic house construction.
@@ -33,4 +34,4 @@ Worker heartbeat: not registered; owner ran this task in curator chat. Separate 
 - Existing asset provenance publication gate unchanged.
 
 ## Commit
-- HEAD at READY_FOR_REVIEW commit; resolve SHA from Git. No next task started or curator PASS issued.
+- 1d835b7 — inherited implementation; no Luna validation or curator PASS yet. Results above are historical checks, not rerun during role correction.

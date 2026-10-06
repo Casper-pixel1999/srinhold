@@ -1,19 +1,22 @@
 # Task
 ID: AK-001
-Status: READY_FOR_REVIEW
+Status: READY
 Attempt: 1
-Base commit: d53a3f1c04070e40f95f33c85f35f4c735529e27
-Report commit: HEAD at READY_FOR_REVIEW commit (resolve actual SHA from Git)
+Base commit: set by Luna when claiming this handoff
+Report commit: pending Luna validation report
+Existing implementation: 1d835b7 (preserve; do not rebuild)
 Last reviewed commit: none
 Review decision: pending
 
 ## Goal
-Clean runnable Russian settlement foundation with visible map interaction and one atomic construction action.
+Validate and take ownership of the existing AK-001 foundation against the original criteria; preserve working implementation.
 
 ## Context
-M1. legacy/ is reference only; see LEGACY_REVIEW.md and ARCHITECTURE.md. Do not import old modules or recreate v8 scope. Register Luna heartbeat on first start per AGENTS.md.
+M1. Sol already implemented the foundation in 1d835b7 before the owner restored strict role boundaries. This is an inherited-work validation handoff, not a new implementation or correction cycle. Original acceptance criteria below remain frozen. Read the existing source/report first; do not rebuild working features. legacy/ is reference only. No heartbeat or automatic monitoring. No PASS has been issued.
 
 ## Scope
+Luna's current operation is verification/reporting only: inspect existing code, run the required checks and live desktop/mobile verification below. The following describes the inherited implementation to validate, not permission to recreate it or add features. If a criterion fails, record the concrete blocker and stop with BLOCKED; do not fix production or add/modify tests until Sol issues an owner-requested FIX.
+
 - New root HTML/CSS/modules, Windows-compatible Node dev command localhost:3000, unit command and minimal static release build.
 - Deterministic 24x24 grass/forest/rock/water map, central keep and two houses. Readable isometric rendering with selected legacy sprites and explicit rectangles/anchors; no wholesale old renderer copy.
 - Russian title/HUD: Дерево, Камень, Еда, Золото; stocks 150/100/100/100. Build one house type, cost 35 wood/15 gold, free grass only. No spacing rule this task.
@@ -41,4 +44,4 @@ Production/population/workers, combat/pathfinding, campaign, persistence/migrati
 Inspect actual running source and built app. Commit evidence/AK-001-desktop.png (1440x900), evidence/AK-001-mobile.png (390x844), evidence/AK-001-landscape.png (844x390). At least one shows selected/built house. Inspect clipping/sprite artifacts and touch placement usability. Report interaction checks. Missing browser evidence is a blocker.
 
 ## Completion Requirements
-Claim/record base per AGENTS; implement only scope. WORK_REPORT: ID/attempt/base, paths/checks/screenshots/problems and worker heartbeat ID. Set READY_FOR_REVIEW; commit relevant code/tests/evidence/report/status in English; leave clean tree; STOP. No next task or curator/legacy edits.
+Claim/record base per AGENTS; validate inherited work only. WORK_REPORT: ID/attempt/base, executed checks, inspected screenshots and concrete problems; distinguish inherited Sol evidence from Luna's checks. Reuse correct existing screenshots unless new evidence is needed. If checks pass, set READY_FOR_REVIEW; otherwise BLOCKED with failures. Commit report/status and necessary evidence only in English; leave clean tree; STOP. No production/test fixes, next task, heartbeat or curator/legacy edits. Owner requests Sol review separately.
