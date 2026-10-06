@@ -1,8 +1,8 @@
 # Task
 ID: AK-002
-Status: READY
+Status: IMPLEMENTING
 Attempt: 1
-Base commit: set by Luna when claiming
+Base commit: 513c9450d7adfcbe61ee8e8cc89e690fad009b06
 Report commit: pending
 Last reviewed commit: none
 Review decision: pending
