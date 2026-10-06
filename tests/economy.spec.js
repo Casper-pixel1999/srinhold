@@ -42,7 +42,7 @@ for(const [name,width,height]of [['desktop',1440,900],['mobile',390,844],['lands
       await construct(page,'house',14,12,touch);await expect(page.locator('#capacity')).toHaveText('26');await expect(page.locator('#gold')).toHaveText('40');
       expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
       for(const button of await page.locator('button:visible').all()){const r=await button.boundingBox();expect(r.width).toBeGreaterThanOrEqual(44);expect(r.height).toBeGreaterThanOrEqual(44);}
-      await page.locator('#reset').click();if(name==='landscape')for(let i=0;i<5;i++)await page.locator('#zoom-out').click();await page.locator('#pause').click();await page.screenshot({path:`evidence/AK-002-${name}.png`});expect(failures).toEqual([]);
+      await page.locator('#reset').click();if(name==='landscape')for(let i=0;i<5;i++)await page.locator('#zoom-out').click();await page.locator('#pause').click();await page.screenshot({path:`test-results/economy-${name}.png`});expect(failures).toEqual([]);
     }finally{await context.close();}
   });
 }

@@ -39,3 +39,8 @@ Consequences: no rollback, self-acceptance, new gameplay scope or Sol fixes; Lun
 Decision: Sol finishes the current incomplete AK-002 with production/test/QA authority; Luna paused. GitHub Casper-pixel1999/srinhold is source of truth; commit/push each completed milestone and stop.
 Reason: owner explicitly changed workflow and requested completion of current work only.
 Consequences: supersedes curator-only rules temporarily; preserve working code/history, no force push, automation or next task before external review/owner approval.
+
+## D009 Exact local settlement persistence
+Decision: schema-v1 envelope under amber-keep-rebuild-save-v1; persist fractional stocks, stable buildings/IDs, population/growth, tick/fixed-step remainder and user pause. Validate before applying; no transient view state, legacy migration or offline catch-up.
+Reason: deterministic resume and safe browser storage failures within AK-003.
+Consequences: corrupt/incompatible startup/manual loads preserve gameplay; automatic writes stop after invalid/unavailable storage until explicit successful save. AK-002 external PASS recorded; AK-003 requires external review after push, no M3 work.

@@ -1,36 +1,35 @@
 # Work Report
-Task: AK-002
+Task: AK-003
 Attempt: 1
-Base commit: 513c9450d7adfcbe61ee8e8cc89e690fad009b06
+Base commit: df687d98fcb7e3e5e9dd1d24091e298388509542
 Author: Sol, owner-authorized temporary developer; Luna paused.
 
 ## Completed
-- Finished inherited economy: house/farm/lumber, correct costs/forest adjacency, atomic preview/confirm/cancel.
-- Wood/food production, consumption, 30s eligible growth, food recovery and housing capacity; Russian HUD and three mobile build cards.
-- Fixed preview command-type overwrite, preserved map/gesture/lifecycle architecture, removed farm atlas fragment. No next milestone.
+- Recorded external AK-002 PASS; finished M2 local persistence only.
+- Schema-v1 snapshots under amber-keep-rebuild-save-v1; full fractional stocks, buildings/IDs/nextId, population/growth, clock/remainder and user pause.
+- Validate before applying; reject malformed/corrupt/incompatible/nonfinite state, illegal types/IDs/placement/timers/capacity.
+- Startup/manual restore; manual, 15s and hidden/pagehide save; Russian feedback, fallible storage remains playable. Invalid saves stop autosave until explicit successful save.
+- No camera/selection/preview persistence, legacy reads/writes, offline catch-up, cloud/account/combat or next task.
 
 ## Changed
-- index.html/style.css; src/{state,main,render,assets}.js; farm/lumber WebP and runtime art manifest; tools/build.mjs.
-- Node/browser tests; three AK-002 screenshots; coordination/workflow and README.
+- src/save.js, platform.js, state.js, main.js; index.html/style.css; package test command.
+- Focused Node/browser tests and AK-003 screenshots; accepted AK-002 evidence preserved (regression screenshots now test-results).
+- TASK/STATE/ROADMAP/CHANGELOG/DECISIONS/ARCHITECTURE/AGENTS/DEFERRED and this report.
 
 ## Tests
-- npm test: 12/12 passed; atomicity, exact 10s output, fractions, adjacency, growth/reset/hunger/recovery, pause, deterministic 300s expansion.
-- npm run build: passed; 16 runtime files, 461027 bytes; no legacy/evidence/tests/debug API.
-- npm run test:browser -- --workers=3: 8/8 passed on source.
-- BUILT_TEST=1 npm run test:browser -- --workers=3: 8/8 passed on dist.
-- Each economy scenario observed >=30 active seconds, production/population change, paused costs/cancel, housing expansion and all three cards.
-- Native Chromium hidden-tab clock/food freeze, native touch drag/pinch, inverse picking/zoom/reset retained. No browser console/page errors, failed assets or legacy requests. git diff --check passed.
+- npm test: 18/18 passed (12 existing + 6 persistence); exact roundtrip, fractional continuation, invalid data/types/IDs and storage failures.
+- npm run test:browser -- --workers=3: 14/14 source passed.
+- BUILT_TEST=1 npm run test:browser -- --workers=3: 14/14 dist passed.
+- All existing camera/build/touch/real hidden-tab regressions retained; three sizes build economy, grow to 13 residents, save/reload exact state and resume production.
+- Browser checks cover corrupt/manual invalid load, startup blocked storage, quota error, legacy sentinel isolation, active reload/pagehide and periodic autosave.
+- npm run build and git diff --check passed. Runtime only; no legacy/evidence/tests/debug interface.
 
 ## Visual Verification
-- Live source opened/snapshotted via agent-browser. Inspected final built captures: evidence/AK-002-desktop.png (1440x900), AK-002-mobile.png (390x844), AK-002-landscape.png (844x390).
-- Farm/lumber, changed stocks, population/housing and all controls visible; no page overflow. Landscape terrain reached by real camera drag; touch targets >=44px.
+- Live source/built inspected using agent-browser; source save/load clicked without console errors.
+- Inspected evidence/AK-003-desktop.png (1440x900), mobile.png (390x844), landscape.png (844x390): restored settlement, pause, Russian persistence actions/feedback visible; no page overflow.
 
-## Problems
-- No implementation blockers. Delivery target origin/main: https://github.com/Casper-pixel1999/srinhold.git; final push result reported to owner.
-
-## Deferred Findings
-- Fractional HUD rounding and optional landscape framing in DEFERRED; actual-phone variation and art provenance gate retained.
-- Save/load is the next proposed priority, not implemented or started.
+## Findings
+- No AK-003 blockers. DEFERRED retains stock rounding, landscape framing, physical-phone variation and art provenance publication gate; optional export/backup/cloud conflict work added.
 
 ## Commit
-- HEAD at completed milestone commit; external reviewer resolves GitHub SHA. No self-acceptance or recurring review.
+- HEAD at AK-003 READY_FOR_REVIEW commit; ordinary push to origin/main, then STOP for external review. No self-PASS.

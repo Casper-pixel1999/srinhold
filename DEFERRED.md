@@ -8,3 +8,4 @@ Candidates only; require an explicit future task.
 - Weather/night modifiers, events, advanced garrisons.
 - Optional v8 save migration after compatibility decision.
 - Art provenance/rights must be verified before publication: README claims originality, no independent license evidence supplied. Runtime unit/advanced atlas scale reviewed at relevant milestones.
+- AK-003: optional save export/backup slots and cloud conflict handling require a future task; local schema-v1 is intentionally a single slot.

@@ -33,3 +33,7 @@ ZIP root index.html; local runtime paths only; exclude legacy/evidence/tests/deb
 
 ## Tests
 Node: command/cost atomicity, deterministic stepping, save roundtrip/corruption; affected navigation/combat regressions later. Browser: scoped gameplay flow, console/network failures, real touch drag/pinch, desktop 1440x900, portrait 390x844, landscape 844x390. Inspect live interactions and screenshots. SDK mocks do not prove platform behavior.
+
+## AK-003 local persistence
+The local adapter reads/writes only amber-keep-rebuild-save-v1. A schema-v1 envelope holds a validated state snapshot and user pause; no camera/selection/preview or wall-clock timestamp. State includes growthSeconds and simulationRemainder so restoring a partial fixed step preserves deterministic continuation. Pause/hidden transitions discard inactive remainder as before; no offline catch-up.
+Startup/manual load validates the complete snapshot before changing the live state. Autosave every 15 seconds and on hidden/pagehide; corrupt/incompatible or unavailable storage disables automatic writes until an explicit successful save. Failures give Russian feedback and preserve current gameplay. Cloud remains a future adapter task.

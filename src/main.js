@@ -6,7 +6,26 @@ import {createLocalPlatform} from './platform.js';
 
 const $=id=>document.getElementById(id),state=createState(),simulation=createSimulation(state),platform=createLocalPlatform();
 for(const button of document.querySelectorAll('button'))button.disabled=true;
-let renderer,buildingMode=false,selectedBuilding='house',preview=null,paused=false,lastTime=performance.now(),toastTimer;
+let renderer,buildingMode=false,selectedBuilding='house',preview=null,paused=false,lastTime=performance.now(),toastTimer,automaticSaving=true,lastSave=performance.now();
+function save(manual=false){
+  if(!manual&&!automaticSaving)return;
+  const result=platform.save(state,paused);lastSave=performance.now();
+  automaticSaving=result.status==='saved';
+  if(manual||!automaticSaving)toast(automaticSaving?'Поселение сохранено':'Сохранение недоступно. Можно продолжать игру.');
+}
+function load(initial=false){
+  const result=platform.load();
+  if(result.status==='loaded'){
+    Object.assign(state,result.state);paused=result.paused;lastTime=performance.now();lastSave=lastTime;automaticSaving=true;
+    if(renderer){cancel();showSelection(null);renderer.reset();update();platform.setGameplayActive(!paused&&!document.hidden);}
+    if(!initial)toast('Поселение восстановлено');
+  }else if(result.status!=='empty'||!initial){
+    if(result.status!=='empty')automaticSaving=false;
+    toast(result.status==='empty'?'Сохранение не найдено':result.status==='invalid'?'Не удалось восстановить сохранение. Поселение не изменено.':'Сохранение недоступно. Можно продолжать игру.');
+  }
+}
+$('save').onclick=()=>save(true);
+$('load').onclick=()=>load();
 function toast(message){$('toast').textContent=message;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').textContent='',3500);}
 function showSelection(building){
   renderer.selected=building?.id||null;
@@ -42,18 +61,19 @@ $('confirm').onclick=()=>{
 };
 $('pause').onclick=()=>{paused=!paused;lastTime=performance.now();simulation.advance(0,false);platform.setGameplayActive(!paused&&!document.hidden);update();};
 window.addEventListener('keydown',e=>{if(e.key==='Escape')cancel();});
-document.addEventListener('visibilitychange',()=>{lastTime=performance.now();simulation.advance(0,false);platform.setGameplayActive(!paused&&!document.hidden);});
+document.addEventListener('visibilitychange',()=>{lastTime=performance.now();simulation.advance(0,false);platform.setGameplayActive(!paused&&!document.hidden);if(document.hidden&&renderer)save();});
+window.addEventListener('pagehide',()=>{if(renderer)save();});
 
 async function start(){
   try{
-    await platform.init();renderer=new Renderer($('map'),await loadAssets(),state);connectInput($('map'),renderer,tap);
+    await platform.init();load(true);renderer=new Renderer($('map'),await loadAssets(),state);connectInput($('map'),renderer,tap);
     $('zoom-in').onclick=()=>zoomAt(renderer.camera,1.2,renderer.width/2,renderer.height/2);
     $('zoom-out').onclick=()=>zoomAt(renderer.camera,1/1.2,renderer.width/2,renderer.height/2);
     $('reset').onclick=()=>renderer.reset();
     new ResizeObserver(()=>renderer.resize()).observe($('world'));
     for(const button of document.querySelectorAll('button'))button.disabled=false;
-    $('loading').hidden=true;platform.ready();platform.setGameplayActive(true);lastTime=performance.now();update();
-    function frame(now){simulation.advance((now-lastTime)/1000,!paused&&!document.hidden);lastTime=now;renderer.draw();update();requestAnimationFrame(frame);}
+    $('loading').hidden=true;platform.ready();platform.setGameplayActive(!paused&&!document.hidden);lastTime=performance.now();update();
+    function frame(now){simulation.advance((now-lastTime)/1000,!paused&&!document.hidden);lastTime=now;if(automaticSaving&&now-lastSave>=15000)save();renderer.draw();update();requestAnimationFrame(frame);}
     requestAnimationFrame(frame);
   }catch(error){console.error(error);$('loading').textContent='Не удалось загрузить долину. Обновите страницу, чтобы повторить.';}
 }

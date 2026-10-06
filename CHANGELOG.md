@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-10-06 — AK-002 — external PASS
+- Owner supplied external acceptance of df687d98fcb7e3e5e9dd1d24091e298388509542. Economy accepted; AK-003 local persistence is the only authorized next task.
+
 ## 2026-10-06 — AK-002 — completed, external review pending
 - Continued existing economy work; farm/lumber, atomic type-specific construction, resource production/food consumption, housing/population HUD and optimized sprites.
 - Fixed preview overwriting command type; removed farm atlas fragment; retained desktop/touch/lifecycle regressions.
@@ -26,3 +29,7 @@
 - No rebuilt production code/public deployment yet.
 
 Accepted entries: date / task ID / PASS or DEFER / full candidate SHA / outcome. FIX records SHA/blocking criteria in TASK; never repeat same review.
+
+## AK-003 — local persistence (external review pending)
+- Completed schema-v1 local settlement save/load, exact deterministic continuation, safe validation/storage failure feedback and desktop/mobile evidence.
+- Candidate: HEAD at AK-003 READY_FOR_REVIEW commit; push main and stop. No self-acceptance or M3 task.

@@ -20,7 +20,7 @@ export function terrainAt(x, y) {
 }
 
 export function createState() {
-  return {schemaVersion:1, mapId:'valley', tick:0, nextId:4,
+  return {schemaVersion:1, mapId:'valley', tick:0, nextId:4, simulationRemainder:0,
     resources:{wood:150,stone:100,food:100,gold:100}, population:12, growthSeconds:0,
     buildings:[{id:1,type:'keep',x:12,y:12},{id:2,type:'house',x:10,y:12},{id:3,type:'house',x:12,y:15}]};
 }
@@ -80,10 +80,10 @@ function step(state) {
 
 // Fixed-step economy and clock; inactive time is discarded, never caught up.
 export function createSimulation(state) {
-  let accumulator=0;
+
   return {advance(seconds,active) {
-    if (!active) { accumulator=0; return; }
-    accumulator+=Number.isFinite(seconds)?Math.max(0,Math.min(seconds,.25)):0;
-    while (accumulator>=.1-1e-9) { step(state);accumulator-=.1; }
+    if (!active) { state.simulationRemainder=0; return; }
+    state.simulationRemainder+=Number.isFinite(seconds)?Math.max(0,Math.min(seconds,.25)):0;
+    while (state.simulationRemainder>=.1-1e-9) { step(state);state.simulationRemainder=Math.max(0,state.simulationRemainder-.1); }
   }};
 }

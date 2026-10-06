@@ -32,7 +32,7 @@ One task, one writer, shared main checkout. No concurrent edits/Git operations. 
 - No external messages, custom daemon, API keys, subagents or Qwen by default. No remote publication/auto-merge.
 
 ## Git and completion
-Shared local main; no remote configured. No force push, destructive reset/clean, rewrite/amend, merging main or sweeping unrelated files. Stage explicit relevant paths; English logical commits. Separate checkout needs explicit sync plan. End completed passes with clean tree.
+Shared local main; origin https://github.com/Casper-pixel1999/srinhold.git. No force push, destructive reset/clean, rewrite/amend, merging main or sweeping unrelated files. Stage explicit relevant paths; English logical commits. Separate checkout needs explicit sync plan. End completed passes with clean tree.
 Run TASK checks and affected regressions only. Visual/gameplay changes require actual browser inspection on desktop/mobile and committed milestone screenshots. Missing tools/evidence is a blocker, never claimed PASS.
 No unrelated cleanup, framework/dependency changes, speculative optimizations or expanded features. Simplest compatible implementation wins; escalate only material product/save/architecture/dependency/performance changes.
 legacy/ is read-only reference; no runtime imports. New saves use a new key, leaving old data untouched. WORK_REPORT ~40 lines max; STATE ~20. No huge logs/diffs or repeated history.
